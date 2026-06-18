@@ -1,0 +1,6 @@
+{
+  "name": "Balatro Redesigned",
+  "description": "An interactive, retro-cyberpunk psychedelic redesign of the Balatro homepage featuring a custom procedural WebGL shader background, Awwwards-style HUD layouts, and interactive Joker cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-hud: "VT323", monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-red: #DE443B;
+  --color-brand-blue: #12C2E9;
+  --color-brand-gold: #F4D03F;
+  --color-cyber-dark: #0A0F11;
+  --color-cyber-grid: #1A262C;
+}
+
+/* Base custom interactive states & pixel elements */
+body {
+  background-color: var(--color-cyber-dark);
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Scanline Simulation Overlay */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 15;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Infinite retro grid scrolling */
+.cyber-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* CRT Screen distortion flicker animation */
+@keyframes crt-flicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 0.995; }
+  100% { opacity: 0.985; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Retro HUD layout details */
+.border-hud {
+  border: 1px solid var(--color-cyber-grid);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(222, 68, 59, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 15px rgba(18, 194, 233, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 15px rgba(244, 208, 63, 0.3);
+}
+
+/* Hologram screen tint block */
+.hologram-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 50%, rgba(18, 194, 233, 0.05) 50%);
+  background-size: 100% 4px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0F11;
+  border-left: 1px solid #1A262C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DE443B;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #12C2E9;
+}
+
